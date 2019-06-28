@@ -35,8 +35,13 @@ module.exports = class City{
     try{
       tabPlayers[idPlayer].inventory.push(type, entrepot.pull(type, quantity));
     }
-    catch{
-
+    catch(ex){
+      return ex.message;
     }
+    return quantity;
+  }
+
+  pushBanque(idPlayer, type, quantity){
+    entrepot.push(type, tabPlayers[idPlayer].inventory.pull(type, quantity));
   }
 };

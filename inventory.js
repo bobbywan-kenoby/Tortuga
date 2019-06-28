@@ -50,4 +50,19 @@ module.exports = class Inventory {
 
     }
   }
+
+  push(type, quantity){
+    switch (type) {
+      case "wood":
+        this.wood += quantity;
+        break;
+      case "metal":
+        this.metal += quantity;
+        break;
+      case "food":
+        this.food += quantity;
+        break;
+
+    }
+  }
 };
