@@ -1,9 +1,34 @@
 module.exports = class Inventory {
-  constructor() {
-    this.wood = 0;
-    this.metal = 0;
-    this.food = 0;
-    this.equipment = [];
+  #wood = 0;
+  #metal = 0;
+  #food = 0;
+  #equipment = [];
+
+  constructor(startWood, startMetal, startFood) {
+    this.#wood = startWood;
+    this.#metal = startMetal;
+    this.#food = startMetal;
+  }
+
+  getWood(){
+    return this.#wood;
+  }
+  addWood(quantity){
+    this.#wood += quantity;
+  }
+
+  getMetal(){
+    return this.#metal;
+  }
+  addMetal(quantity){
+    this.#metal += quantity;
+  }
+
+  getFood(){
+    return this.#food;
+  }
+  addFood(quantity){
+    this.#food += quantity;
   }
 
   getWood(){

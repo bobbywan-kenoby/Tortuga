@@ -2,6 +2,7 @@ const Entity = require('./entity');
 const Inventory = require('./inventory');
 
 module.exports = class Player extends Entity {
+  #name;
   #gold = 0;
   #action = "";
   #equip = null;
@@ -9,9 +10,14 @@ module.exports = class Player extends Entity {
   #mining = 0;
   #forestry = 0;
   #fishing = 0;
-  constructor() {
+  constructor(name) {
     super(50, 10);
     this.#inventory = new Inventory(0,0,0);
+    this.#name = name;
+  }
+
+  toString(){
+    return `${this.#name} : ${this.getHealth()} ${this.isAlive()}`;
   }
 
   getAction(){
