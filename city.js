@@ -8,25 +8,25 @@ module.exports = class City{
     //this.port = new Port();
     //this.marche = new Marche();
     this.entrepot = new Inventory(0,0,0);
-    this.tabBatiments = [];
+    this.tabBuildings = [];
     this.defense = 0;
   }
 
   build(idBuilding){
-    costs = this.tabBatiments[idBuilding].getCost();
+    costs = this.tabBuildings[idBuilding].getCost();
 
     if(this.entrepot[0] < costs[0] || this.entrepot[1] < costs[1] || this.entrepot[2] < costs[2]){
       return "resources missing";
     }
-    else if(this.tabBatiments[idBuilding].isBuilt()){
+    else if(this.tabBuildings[idBuilding].isBuilt()){
       return "already built"
     }
     else{
-      this.tabBatiments[idBuilding].setBuilt(true);
+      this.tabBuildings[idBuilding].setBuilt(true);
       this.entrepot[0] -= costs[0];
       this.entrepot[1] -= costs[1];
       this.entrepot[2] -= costs[2];
-      this.defense += tabBatiments[i].getPDV();
+      this.defense += tabBuildings[i].getPDV();
       return "Building complete !";
     }
   }
@@ -43,5 +43,18 @@ module.exports = class City{
 
   pushBanque(idPlayer, type, quantity){
     entrepot.push(type, tabPlayers[idPlayer].inventory.pull(type, quantity));
+  }
+
+  getEntrepot(){
+    return this.entrepot;
+  }
+
+  getBuildings(){
+    return tabBuildings;
+  }
+
+  addPlayer(){
+    tabPlayers.push(new Player());
+    return tabPlayers.length;
   }
 };
