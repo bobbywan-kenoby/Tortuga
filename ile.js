@@ -1,9 +1,10 @@
 const LieuRecolte = require('./lieuRecolte');
 const Player = require('./player');
+const City = require('./city');
 
 module.exports = class Ile {
-  #listPlayer = [];
-  ville = null;
+  listPlayer = [];
+  ville = new City();
   constructor() {
     this.forest = new LieuRecolte("wood");
     this.mine = new LieuRecolte("metal");
@@ -11,19 +12,20 @@ module.exports = class Ile {
   }
 
   addPlayer(playerName){
-    this.#listPlayer.push(new Player(playerName));
+    this.listPlayer.push(new Player(playerName));
   }
+
   getNbPlayer(){
     var nbPlayerAlive = 0;
-    for (let player of this.#listPlayer) {
-      if(player.isAlive()){
+    for (const player of this.listPlayer) {
+      if(player.isAlive){
         nbPlayerAlive += 1;
       }
     }
     return nbPlayerAlive;
   }
 
-  getPlayer(index){
-    return this.#listPlayer[index];
+  update(){
+    //TO DO
   }
 };

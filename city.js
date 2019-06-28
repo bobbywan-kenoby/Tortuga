@@ -5,8 +5,8 @@ const Building = require('./inventory');
 module.exports = class City{
   constructor(){
     this.tabPlayers = [];
-    this.port = new Port();
-    this.marche = new Marche();
+    //this.port = new Port();
+    //this.marche = new Marche();
     this.entrepot = new Inventory(0,0,0);
     this.tabBatiments = [];
     this.defense = 0;
